@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Incidents</title>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="./src/css/style.css">
+</head>
+<body>
+	<div id="main">
+		<h3>Incidents</h5>
+		<table id="myTable" class="display">
+	    <thead>
+	      <tr>
+	      	<th></th>
+	        <th>Incident</th>
+	        <th>Date & Time</th>
+	        <th>Priority</th>
+	        <th>Location Name</th>
+	      </tr>
+	    </thead>
+	    <tbody id="incidents">
+	    </tbody>
+		</table>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+	<script type="text/javascript" src="src/js/api.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			incidents.map(incident=>{
+				let location = "";
+				locationIds.map(locations=>{
+					(locations.id == incident.locationId)? (location = locations.name):("")
+				})
+
+				if(incident.priority === 1) {
+					let row = `<tr class="text-center align-disable">
+						<td class="text-right align-disable"><img src='./src/img/alarm-low.png'/></td>
+		        <td>` + incident.name + `</td>
+		        <td class="date">` + moment(incident.datetime).format('M/D/YYYY HH:mm:ss A') + `</td>
+		        <td>` + incident.priority + `</td>
+		        <td>` + location + `</td>
+		      </tr>`;
+					$('#incidents').append(row);
+				} else if(incident.priority === 2) {
+					let row = `<tr class="text-center align-disable">
+						<td class="text-right align-disable"><img src='./src/img/alarm-medium.png'/></td>
+		        <td>` + incident.name + `</td>
+		        <td class="date">` + moment(incident.datetime).format('M/D/YYYY HH:mm:ss A') + `</td>
+		        <td>` + incident.priority + `</td>
+		        <td>` + location + `</td>
+		      </tr>`;
+					$('#incidents').append(row);
+				} else {
+					let row = `<tr class="text-center align-disable">
+						<td class="text-right align-disable"><img src='./src/img/alarm-high.png'/></td>
+		        <td>` + incident.name + `</td>
+		        <td class="date">` + moment(incident.datetime).format('M/D/YYYY HH:mm:ss A') + `</td>
+		        <td>` + incident.priority + `</td>
+		        <td>` + location + `</td>
+		      </tr>`;
+					$('#incidents').append(row);
+				}
+			})
+
+	    $('#myTable').DataTable();
+		})
+	</script>
+</body>
+</html>
