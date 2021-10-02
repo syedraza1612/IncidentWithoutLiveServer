@@ -1,1 +1,61 @@
+#main {
+	padding: 10px;
+    background: #3e3e3e;
+    color: white !important;
+}
 
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd, table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.even, table.dataTable.display tbody tr.odd>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1 {
+    background-color: #3e3e3e;
+}
+
+table.dataTable.display tbody tr.even>.sorting_1, table.dataTable.order-column.stripe tbody tr.even>.sorting_1 {
+    background-color: #3e3e3e;
+}
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+    color: #fff;
+}
+
+#myTable_filter, #myTable_length, #myTable_info, #myTable_paginate {
+	display: none;
+}
+
+table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
+    background-color: #282828 !important;
+}
+
+table.dataTable.display tbody tr:hover>.sorting_1, table.dataTable.order-column.hover tbody tr:hover>.sorting_1 {
+	background-color: #282828 !important;
+}
+
+@media screen and (max-width: 600px) {
+	tr.odd td:last-child, tr.even td:last-child {
+		border-bottom: 1px solid white !important;
+	}
+
+	.align-disable {
+		text-align: unset;
+	}
+
+	td {
+		display: block !important;
+		width: 100%;
+		border: none !important;
+	}
+
+	thead tr th:nth-child(1), thead tr th:nth-child(2), thead tr th:nth-child(5) {
+		display: none !important;
+	}
+
+	.date, .sorting_1 {
+		width: 250px !important;
+	}
+}	
